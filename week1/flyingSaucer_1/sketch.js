@@ -18,7 +18,12 @@ function setup()
         height: 50,
         num_lights:19,
         size_lights:7,
-        brightnesses: []
+        brightnesses: [],
+    
+        hover:function()
+        {
+            console.log("hovering")
+        }
     }
 
     for(var i=0;i < flying_saucer.num_lights;i++)
@@ -73,8 +78,11 @@ function draw()
         ellipse(flying_saucer.x - flying_saucer.width/2 + incr*i, 
             flying_saucer.y,
             flying_saucer.size_lights)
+        //resets lights to animate
         flying_saucer.brightnesses[i] +=3;
         flying_saucer.brightnesses[i] = flying_saucer.brightnesses[i]%255;
+
+        flying_saucer.hover();
 
     }
 }
