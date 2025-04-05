@@ -4,6 +4,7 @@
 
 var flyingSaucer;
 var cowManager;
+var flyingSaucers;
 
 
 function FlyingSaucer(x,y)
@@ -30,11 +31,11 @@ function FlyingSaucer(x,y)
         this.x += random(-1,1);
         this.y += random(-1,1); 
         
-        if(!this.beamOn && random() > 0.995)
+        if(!this.beamOn && random() > 0.99)
         {
             this.beamOn = true;
         }
-        else if(this.beamOn && random() > 0.998)
+        else if(this.beamOn && random() > 0.999)
         {
             this.beamOn = false;
         }
@@ -303,6 +304,14 @@ function setup()
     noStroke();
     
     flyingSaucer = new FlyingSaucer(width/2,100);
+
+    flyingSaucers = [];
+
+    for(var i = 0; i<3;i++)
+    {
+        flyingSaucers.push(new FlyingSaucer(100 + 400 * i, 100))
+    }
+
     cowManager = new CowManager();
 
 }
@@ -317,16 +326,19 @@ function draw()
     
     cowManager.update();
     cowManager.draw();
-
-    flyingSaucer.hover();
-    flyingSaucer.draw();
     
-    
-    if(flyingSaucer.beamOn)
-    {   
-        var b = flyingSaucer.getBeamBoundaries();
-        cowManager.levitateCows(b, flyingSaucer.x, flyingSaucer.y);
+    for(var i = 0;i<flyingSaucers.length; i++)
+    {
+        flyingSaucers[i].hover();
+        flyingSaucers[i].draw();
+        
+        if(flyingSaucers[i].beamOn)
+        {   
+            var b = flyingSaucers[i].getBeamBoundaries();
+            cowManager.levitateCows(b, flyingSaucers[i].x, flyingSaucers[i].y);
+        }
     }
+    
 
 }
 
