@@ -25,25 +25,20 @@ function setup() {
 
 	//create a new horde and add zombies
 	horde = new Horde();
-	horde.addZombies(1);
+	horde.addZombies(5);
 
 }
 
-///GET IT WORKING!!!!
 function mouseClicked(){
-	console.log('click')
-	for (var i = 0; i<horde.length; i++){
-		if(dist(mouseX,mouseY,horde.zombies[i].x,horde.zombies[i].y)<=100){
-			horde.zombies[i].health =0
-			console.log(horde.zombies[i].x)
-		}
-	}
+	this.horde.whack()
 }
 
 function draw() {
 	
 	background(77, 112, 107);
 	this.horde.drawZombies();
+	this.horde.checkHealth();
+	this.horde.checkScore();
 	
 
 }

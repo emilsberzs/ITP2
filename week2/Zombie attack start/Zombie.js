@@ -31,5 +31,9 @@ function zombie(y) {
 		this.x += this.speed;
 	}
 
+	this.updateHealth = function(){
+		this.health -= 1;
+	}
+
     
 }
