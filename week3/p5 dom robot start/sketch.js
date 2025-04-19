@@ -1,18 +1,25 @@
 var myRobot;
+// var transmitButton;
+// var rotationSlider;
+// var nameText;
+// var colourSelect;
 
 function setup() {
 	// put setup code here
+	angleMode(DEGREES);
 	createCanvas(500, 500);
-	myRobot = new Robot("grey", false, "marvin", 0);
-
-	//add dom controls
-
+	myRobot = new Robot("gray", false, "marvin", 0);
 }
 
 function draw() {
 	// put drawing code here
 	background(50);
+	// myRobot.colour = colourSelect.selected();
+	// myRobot.rotation = rotationSlider.value();
+	// myRobot.name = nameText.value()
+	// myRobot.transmitting = transmitButton.value();
 	myRobot.drawRobot();
+
 }
 
 function Robot(colour, transmitting, name, rotation) {
@@ -20,9 +27,45 @@ function Robot(colour, transmitting, name, rotation) {
 	this.rotation = rotation;
 	this.transmitting = transmitting;
 	this.name = name;
+	
+	var controlsDiv = select("#robotControls")
+	
+	//add dom controls
+	var self = this;
+	var transmitButton = createButton("Transmit");
+	transmitButton.parent(controlsDiv);
+	transmitButton.mousePressed(function(){
+			self.transmitting = !self.transmitting;
+		}
+	)
+
+	var rotationSlider = createSlider(0,360,0);
+	rotationSlider.parent(controlsDiv);
+	rotationSlider.input(function(){
+		self.rotation = this.value();
+	})
+
+	var nameText = createInput();
+	nameText.parent(controlsDiv);
+	nameText.input(function(){
+		self.name = this.value();
+	})
+
+	var colourSelect = createSelect();
+	colourSelect.parent(controlsDiv);
+
+	var colorOptions = ["gray", "white", "blue", "red", "yellow", "green", "purple"];
+	for(var i=0;i<colorOptions.length;i++){
+		colourSelect.option(colorOptions[i]);
+	}
+
+	colourSelect.input(function(){
+		self.colour = this.value();
+	})
 
 	this.drawRobot = function() {
 		translate(width / 2, height / 2);
+		rotate(this.rotation);
 		//robots head
 		fill(this.colour);
 		strokeWeight(4);
@@ -67,5 +110,10 @@ function Robot(colour, transmitting, name, rotation) {
 		vertex(50, 120);
 		vertex(75, 90);
 		endShape();
+
+		//robot name
+		fill(0);
+		textAlign(CENTER);
+		text(this.name,0,200)
 	}
 }
