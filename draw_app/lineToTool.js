@@ -1,4 +1,5 @@
 function LineToTool(){
+	//Icon location
 	this.icon = "assets/lineTo.jpg";
 	this.name = "LineTo";
 	
@@ -24,7 +25,7 @@ function LineToTool(){
 			}
 
 		}
-
+		//Stop drawing and reset startMouse coord to outside of canvas
 		else if(drawing){
 			drawing = false;
 			startMouseX = -1;
