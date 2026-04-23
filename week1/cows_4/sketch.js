@@ -30,7 +30,7 @@ function FlyingSaucer(x,y)
         this.x += random(-1,1);
         this.y += random(-1,1); 
         
-        if(!this.beamOn && random() > 0.995)
+        if(!this.beamOn && random() > 0.999)
         {
             this.beamOn = true;
         }

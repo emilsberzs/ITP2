@@ -2,10 +2,6 @@
 //Object orientation revisted
 //part one
 
-
-
-
-
 function setup()
 {
     createCanvas(800,600);
@@ -16,8 +12,8 @@ function setup()
         y: 150,
         width: 200,
         height: 50,
-        num_lights:19,
-        size_lights:7,
+        num_lights:10,
+        size_lights:10,
         brightnesses: [],
     
         hover:function()
@@ -28,7 +24,7 @@ function setup()
 
     for(var i=0;i < flying_saucer.num_lights;i++)
     {
-        flying_saucer.brightnesses.push((i * 10)%255)
+        flying_saucer.brightnesses.push((i * 8)%255)
     }
 }
 
@@ -65,8 +61,8 @@ function draw()
         0,PI);
     
     //wiggle
-    flying_saucer.x += random(-2,2);
-    flying_saucer.y += random(-2,2);
+    flying_saucer.x += random(-1,1);
+    flying_saucer.y += random(-1,1);
     
     fill(255)
 
