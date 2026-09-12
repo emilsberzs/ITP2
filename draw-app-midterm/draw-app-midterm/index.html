@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="lib/p5.min.js"></script>
+    <script src="lib/p5.dom.js"></script>
+
+    <script src="sketch.js"></script>
+
+    <!-- add extra scripts below -->
+    <script src="toolbox.js"></script>
+    <script src="colourPalette.js"></script>
+    <script src="helperFunctions.js"></script>
+
+    <script src="freehandTool.js"></script>
+    <script src="sprayCanTool.js"></script>
+    <script src="lineToTool.js"></script>
+    <script src="mirrorDrawTool.js"></script>
+    <!--My own code start-->
+    <script src="rectangleTool.js"></script>
+    <script src="ellipseTool.js"></script>
+    <script src="polygonTool.js"></script>
+
+    <!--My own code end-->
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+  	<div class="wrapper">
+      <div class="box header">My Drawing App
+
+        <button id="clearButton">Clear</button>
+        <button id="saveImageButton">Save Image</button>
+        <!--START OWN CODE-->
+
+        <button id="fillButton">Outline</button>
+
+        <label for="alphaSlider">Fill Opacity</label>
+        <input
+        id="alphaSlider"
+        type="range"
+        min="0"
+        max="255"
+        value="255">
+        <span id="alphaValue">255</span>
+
+        <label for="strokeWeight">Stroke weight</label>
+        <input 
+        id="strokeWeight"
+        type="range"
+        min="1"
+        max="10"
+        value="1">
+        <span id="strokeValue">1</span>
+
+        <!--END OWN CODE-->
+      </div>
+      <div class="box" id="sidebar"></div>
+      <div id="content"></div>
+      <div class="box colourPalette"></div>
+      <div class="box options" id="options"></div>
+	</div>
+  </body>
+</html>
